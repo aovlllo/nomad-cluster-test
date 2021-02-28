@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 WORKDIR /
 
-RUN apt update && apt install -y curl jq unzip iproute2 docker.io
+RUN apt update && apt install -y curl jq unzip iproute2 docker.io net-tools dnsutils
 
 ADD scripts/install_nomad.sh .
 ADD scripts/install_consul.sh .

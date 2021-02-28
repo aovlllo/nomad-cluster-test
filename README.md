@@ -57,23 +57,15 @@ Then just type in your CLI:
 docker-compose up
 ```
 
-Note in server/follower configuration files that nomad cluster expects 3 instances to start but we have only two
-nodes provisioned by default, in order to have the minimum quorum for leader election we need to scale our
-`nomad-follower`s to 2.
-
-```shell
-docker-compose scale nomad-follower=2
-```
-
 To control the nomad cluster from your host you'll need to configure it, check https://www.nomadproject.io/docs/commands/index.html#remote-usage for details on how to do it.
 
 After that you'll able to schedule new jobs to the nomad cluster:
 
 ```shell
-nomad plan jobs/echo.hcl
+nomad plan jobs/app.nomad
 
 # get this command from the previous command
-nomad job run -check-index <INDEX> jobs/echo.hcl
+nomad job run -check-index <INDEX> jobs/app.nomad
 ```
 
 To check if the job/task is running, just get the IP address and port of some allocation:
